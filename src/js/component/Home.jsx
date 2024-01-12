@@ -9,7 +9,7 @@ const Home = () => {
 	};
 
 	const addItem = (e) => {
-		if (e.key === 'Enter') {
+		if (e.keyCode === 13) {
 			setList([...list, input]);
 			setInput("");
 		}
