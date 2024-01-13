@@ -6,8 +6,8 @@ const Home = () => {
 
 	const validateInput = (e) => {
 		setInput(e.target.value);
-		if (inputValue.trim() !== "") return Alert("Por favor rellenar input")
 	};
+
 
 	const addItem = (e) => {
 		if (e.keyCode === 13) {
@@ -27,19 +27,21 @@ const Home = () => {
 	};
 
 	return (
-		<div className="text-center">
-			<h1 className="mt-5"> To do list</h1>
+		<div className="container text-center">
+			<h1 className="text-center mt-5"> To do list</h1>
 			<input type="text" onChange={validateInput} value={input} onKeyDown={addItem} />
-			<ul>
+			<ul className="text-center">
 				{list.map((elemento, index) => (
 					<li key={index}>
-						{elemento} <i className="fa-solid fa-x" onClick={() => deleteItem(index)}></i>
+						{elemento} <i className="icon fa-solid fa-x" onClick={() => deleteItem(index)}></i>
 					</li>
 				))}
+				<li className="itemLeft">{list.length === 0 ? "No hay tareas, añadir tareas" : `${list.length} item${list.length === 1 ? '' : 's'} left`}</li>
 			</ul>
 		</div>
 	);
 };
 
 export default Home;
+
 
