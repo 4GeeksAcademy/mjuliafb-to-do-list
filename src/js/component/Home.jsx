@@ -6,12 +6,17 @@ const Home = () => {
 
 	const validateInput = (e) => {
 		setInput(e.target.value);
+		if (inputValue.trim() !== "") return Alert("Por favor rellenar input")
 	};
 
 	const addItem = (e) => {
 		if (e.keyCode === 13) {
-			setList([...list, input]);
-			setInput("");
+			if (input.trim() !== "") {
+				setList([...list, input]);
+				setInput("");
+			} else {
+				alert("Por favor, rellena el input antes de añadirlo");
+			}
 		}
 	};
 
@@ -23,7 +28,7 @@ const Home = () => {
 
 	return (
 		<div className="text-center">
-			<h1 className="text-center mt-5"> To do list</h1>
+			<h1 className="mt-5"> To do list</h1>
 			<input type="text" onChange={validateInput} value={input} onKeyDown={addItem} />
 			<ul>
 				{list.map((elemento, index) => (
